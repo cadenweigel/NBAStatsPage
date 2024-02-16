@@ -1,0 +1,3 @@
+jquery-csv: https://github.com/evanplaice/jquery-csv/ 
+csv: https://www.npmjs.com/package/csv
+papaparse: https://www.papaparse.com/ 
