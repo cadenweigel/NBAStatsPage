@@ -1,14 +1,9 @@
 //set up csv
-/*function parseCSV(){
-    Papa.parse(/data/player_stats_2324.csv, {
-        complete: function(results) {
-            console.log("Finished:", results.data);
-        }
-    });
-}*/
-function doStuff(data) {
+
+function manageData(data) {
     //Data is usable here
-    console.log(data);
+    //console.log(data);
+    console.log(data[0]);
 }
 
 function parseData(url, callBack) {
@@ -21,9 +16,7 @@ function parseData(url, callBack) {
     });
 }
 
-parseData("data/player_stats_2324.csv", doStuff);
-
-parseCSV();
+parseData("data/player_stats_2324.csv", manageData);
 
 //convert object from csv to new object array
 
