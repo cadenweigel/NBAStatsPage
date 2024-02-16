@@ -11,6 +11,7 @@ function parseData(url, callBack) {
         dynamicTyping: true,
         complete: function(results) {
             callBack(results.data);
+            return results.data;
         }
     });
 }
@@ -54,4 +55,5 @@ function Player(name, age, team, gamesPlayed, gamesStarted, minutesPerGame,
     this.pointsPerGame = pointsPerGame;
 }
 
-parseData("data/player_stats_2324.csv", manageData);
+let data = parseData("data/player_stats_2324.csv", manageData);
+console.log(data[197][1]);
