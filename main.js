@@ -1,5 +1,3 @@
-//import * as Papa from 'papaparse/papaparse.js';
-
 //set up csv
 function manageData(data) {
     //Data is usable here
