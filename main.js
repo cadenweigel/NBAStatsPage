@@ -4,7 +4,7 @@ import * as Papa from 'papaparse/papaparse.js';
 function manageData(data) {
     //Data is usable here
     //console.log(data);
-    console.log(data[196][1]);
+    console.log(data[1][1]);
 }
 
 function parseData(url, callBack) {
