@@ -9,16 +9,34 @@ function parseData(url, callBack) {
 }
 
 function manageData(data) {
-    console.log(data);
-    let headers = [1,2,3];
-    let players = [1,2,3];
+    //console.log(data);
+
+    //create array of headers for table
+    let headers = [];
+    for(let i = 1; i < data[0].length - 1; i++){
+        headers.push(data[0][i]);
+    } 
+
+    //create array of player objects
+    let players = [];
+    for (i = 1; i < data.length; i++){
+        //console.log(data[i][1]);
+        let p = new Player(data[i][1],data[i][2],data[i][3],data[i][4],data[i][5],data[i][6],
+                           data[i][7],data[i][8],data[i][9],data[i][10],data[i][11],data[i][12],
+                           data[i][13],data[i][14],data[i][15],data[i][16],data[i][17],data[i][18],
+                           data[i][19],data[i][20],data[i][21],data[i][22],data[i][23],data[i][24],
+                           data[i][25],data[i][26],data[i][27],data[i][28],data[i][29]);
+        players.push(p);
+    }
+
     makeTable(headers, players);
 }
 
 function makeTable(header, players){
     var table = document.getElementById("table");
     
-    /*EXAMPLE CODE
+    /*
+    EXAMPLE CODE: BUILD OFF THIS FOR REAL TABLE!!!!!
     var row = table.insertRow(0);
     // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
     var cell1 = row.insertCell(0);
