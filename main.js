@@ -45,6 +45,14 @@ function makeTable(header, players){
     // Add some text to the new cells:
     cell1.innerHTML = "NEW CELL1";
     cell2.innerHTML = "NEW CELL2";  */
+
+    //Create header row for table 
+    var headerRow = table.insertRow(0);
+    for(let i = 0; i < header.length, i++){
+        let cell = headerRow.insertCell(i);
+        cell.innerHTML = header[i];
+    }
+
 }
 
 function Player(name, age, team, gamesPlayed, gamesStarted, minutesPerGame,
