@@ -10,10 +10,23 @@ function parseData(url, callBack) {
 
 function manageData(data) {
     console.log(data);
+    let headers = [1,2,3];
+    let players = [1,2,3];
+    makeTable(headers, players);
 }
 
 function makeTable(header, players){
+    var table = document.getElementById("table");
+    
+    /*EXAMPLE CODE
+    var row = table.insertRow(0);
+    // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
 
+    // Add some text to the new cells:
+    cell1.innerHTML = "NEW CELL1";
+    cell2.innerHTML = "NEW CELL2";  */
 }
 
 function Player(name, age, team, gamesPlayed, gamesStarted, minutesPerGame,

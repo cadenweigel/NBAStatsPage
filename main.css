@@ -20,12 +20,12 @@ body {
     margin-right: 0px;
   }
 
-  #table {
+  #table_div {
     background-color: rgb(255, 255, 255) ;
     border-style: inset;
   }
 
-  #chart {
+  #chart_div {
     background-color: rgb(255, 255, 255) ;
     border-style: inset;
   }
