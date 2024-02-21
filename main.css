@@ -3,13 +3,24 @@ body {
   }
    
   h1 {
-    color: rgb(255, 255, 255);
-    background-color: lightblue;
+    color: rgb(255, 0, 0);
+    background-color: rgb(17, 165, 214);
     text-align: center;
   }
   
   p {
     font-family: verdana;
     font-size: 20px;
-    text-align: center
+    text-align: center;
   }
+
+  #heading{
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
+  #table {
+    background-color: rgb(255, 255, 255) ;
+  }
+
