@@ -9,8 +9,11 @@ function parseData(url, callBack) {
 }
 
 function manageData(data) {
-    //Data is usable here
     console.log(data);
+}
+
+function makeTable(header, players){
+
 }
 
 function Player(name, age, team, gamesPlayed, gamesStarted, minutesPerGame,
