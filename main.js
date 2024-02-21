@@ -1,22 +1,17 @@
-//set up csv
-function manageData(data) {
-    //Data is usable here
-    //console.log(data);
-    console.log(data[196][1]);
-}
-
 function parseData(url, callBack) {
     Papa.parse(url, {
         download: true,
         dynamicTyping: true,
         complete: function(results) {
             callBack(results.data);
-            return results.data;
         }
     });
 }
 
-//convert object from csv to new object array
+function manageData(data) {
+    //Data is usable here
+    console.log(data);
+}
 
 function Player(name, age, team, gamesPlayed, gamesStarted, minutesPerGame,
                 fieldGoals, fieldGoalsAttempted, fieldGoalPercent,
@@ -55,5 +50,5 @@ function Player(name, age, team, gamesPlayed, gamesStarted, minutesPerGame,
     this.pointsPerGame = pointsPerGame;
 }
 
-let data = parseData("data/player_stats_2324.csv", manageData);
-console.log(data[197][1]);
+parseData("data/player_stats_2324.csv", manageData);
+//console.log(data);
