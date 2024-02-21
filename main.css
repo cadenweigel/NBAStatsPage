@@ -22,5 +22,11 @@ body {
 
   #table {
     background-color: rgb(255, 255, 255) ;
+    border-style: inset;
+  }
+
+  #chart {
+    background-color: rgb(255, 255, 255) ;
+    border-style: inset;
   }
 
