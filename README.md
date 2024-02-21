@@ -6,3 +6,4 @@ Current Roadmap:
 1. Finish Table: I've figured out the code for the table, but need to do more research on how to restrict it to a certain size so that it doesn't fill up the page. Probably something with css + adding a scrollbar will fix this. 
 2. Graphs: I first want to show a basic graph using a libary I found, and will eventually expand on it so that graph axes and types can be changed by the user.
 3. CSS: The current site doesn't look great, so I want to improve the CSS so it looks better than the basic stuff I've done so far. I'm waiting to do this for now so I know what the content on the site will be.
+4. Separating javascript code into more files: I'm currently putting all my code in one file as I figure out how exactly imports work, it seems a bit different than python or C so I'm waiting to tackle this until later. 
