@@ -168,4 +168,3 @@ function Player(name, position, age, team, gamesPlayed, gamesStarted, minutesPer
 }
 
 parseData("data/player_stats_2324.csv", manageData);
-console.log(playerData)
