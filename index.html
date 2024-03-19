@@ -3,7 +3,7 @@
 <html lang="en">
  
     <head>
-        <title>CadenStats</title>
+        <title>NBAStats</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="main.css">
         <script src="node_modules/papaparse/papaparse.js"></script>
@@ -16,14 +16,61 @@
             <h1  id="heading">NBA Stats</h1>
         </div>
 
-        <p>hello!</p>
+        <div id="user">
+            <!--Div for user interface menu-->
+            <form action="/action_page.php">
+                <label for="stats"><b>Choose a stat to sort by:</b></label>
+                <select name="stats" id="stats">
+                  <optgroup label="Player Information">
+                    <option value="name">First Name</option>
+                    <option value="ageA">Age (Ascending)</option>
+                    <option value="ageD">Age (Descending)</option>
+                    <option value="team">Team</option>
+                    <option value="gamesPlayed">Games Played</option>
+                    <option value="gamesStarted">Games Started</option>
+                  </optgroup>
+                  <optgroup label="Shooting Volume + Efficiency">
+                    <option value="fg">Field Goals Made</option> 
+                    <option value="fga">Field Goals Attempted</option>
+                    <option value="fgp">Field Goal Percentage</option>
+                    <option value="3p">3 Pointers Made</option>
+                    <option value="3pa">3 Pointers Attempted</option>
+                    <option value="3pp">3 Point Percentage</option>
+                    <option value="2p">2 Pointers Made</option>
+                    <option value="2pa">2 Pointers Attempted</option>
+                    <option value="2pp">2 Point Percentage</option>
+                    <option value="efg">Effective Field Goal Percentage</option>
+                  </optgroup>
+                  <optgroup label="Per Game Statistics">
+                    <option value="oreb">Offensive Rebounds Per Game</option>
+                    <option value="dreb">Defensive Rebounds Per Game</option>
+                    <option value="treb">Total Rebounds Per Game</option>
+                    <option value="ast">Assists Per Game</option>
+                    <option value="stl">Steals Per Game</option>
+                    <option value="blk">Blocks Per Game</option>
+                    <option value="tov">Turnovers Per Game</option>
+                    <option value="pf">Fouls Per Game</option>
+                    <option value="pts">Points Per Game</option>
+                  </optgroup>
+                </select>
+              </form>
+              <form action="/action_page.php">
+                <label for="number"><b>Choose how many players to show:</b></label>
+                <select name="number" id="number">
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                    <option value="all">all</option>
+                </select>
+              </form>
+              <button onclick="getStatChoice()">Create Table!</button>
+        </div>
 
         <div id="table_div">
             <!--Div for stats table-->>
             <p>Stats Table</p>
-            <table id="table">
-
-            </table>
+            <table id="table"></table>
         </div>
 
         <div id="chart_div">

@@ -8,55 +8,49 @@ function parseData(url, callBack) {
     });
 }
 
-let playerData = [];
+let players = []; //due to variable scope stuff with callback functions
+                  //i need a global variable to store player data
 
 function manageData(data) {
     //console.log(data);
 
     //create array of headers for table
     let headers = [];
-    for(let i = 1; i < data[0].length - 1; i++){
+    for(let i = 1; i < data[0].length; i++){
         headers.push(data[0][i]);
-    } 
+    }
+    headers[0] = "Name"; //change from "Player"
 
     //create array of player objects
-    let players = [];
     for (i = 1; i < data.length; i++){
-        console.log(data[i][1]);
+        //console.log(data[i][1]);
         let p = new Player(data[i][1],data[i][2],data[i][3],data[i][4],data[i][5],data[i][6],
                            data[i][7],data[i][8],data[i][9],data[i][10],data[i][11],data[i][12],
                            data[i][13],data[i][14],data[i][15],data[i][16],data[i][17],data[i][18],
                            data[i][19],data[i][20],data[i][21],data[i][22],data[i][23],data[i][24],
                            data[i][25],data[i][26],data[i][27],data[i][28],data[i][29]);
         players.push(p);
-        playerData.push(p);
     }
 
-    makeTable(headers, players);
+    makeHeader(headers);
+    //makeTable(players.length);
+    //console.log(headers);
 }
 
-function makeTable(header, players){
+function makeHeader(header){
     var table = document.getElementById("table");
-    
-    /*
-    EXAMPLE CODE: BUILD OFF THIS FOR REAL TABLE!!!!!
-    var row = table.insertRow(0);
-    // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
-
-    // Add some text to the new cells:
-    cell1.innerHTML = "NEW CELL1";
-    cell2.innerHTML = "NEW CELL2";  */
-
     //Create header row for table 
     var headerRow = table.insertRow(0);
     for(let i = 0; i < header.length; i++){
         let cell = headerRow.insertCell(i);
         cell.innerHTML = header[i];
+        cell.style.fontWeight = 'bold';
     }
+}
 
-    for(let j = 0; j < players.length; j++){
+function makeTable(numRows){
+    var table = document.getElementById("table");
+    for(let j = 0; j < numRows; j++){
         fillRow(j+1, players[j], table);
     }
 
@@ -167,4 +161,473 @@ function Player(name, position, age, team, gamesPlayed, gamesStarted, minutesPer
     this.pointsPerGame = pointsPerGame;
 }
 
-parseData("data/player_stats_2324.csv", manageData);
+function getStatChoice(){
+    selectElement = document.querySelector('#stats');
+    sortBy = selectElement.options[selectElement.selectedIndex].value;
+    //console.log(sortBy);
+    selectElement = document.querySelector('#number');
+    show = selectElement.options[selectElement.selectedIndex].value;
+    //console.log(show);
+    findSortFunction(sortBy, show);
+}
+
+function findSortFunction(sortBy, show){
+    switch(sortBy){
+        case "name":
+            sortByName(show);
+            break;
+        case "ageA":
+            sortByAgeAscending(show);
+            break;   
+        case "ageD":
+            sortByAgeDescending(show);
+            break;
+        case "team":
+            sortByTeam(show);
+            break;
+        case "gamesPlayed":
+            sortByGamesPlayed(show);
+            break;
+        case "gamesStarted":
+            sortByGamesStarted(show);
+            break;  
+        case "fg":
+            sortByFG(show);
+            break;
+        case "fga":
+            sortByFGA(show);
+            break;
+        case "fgp":
+            sortByFGP(show);
+            break
+        case "3p":
+            sortBy3P(show);
+            break;
+        case "3pa":
+            sortBy3PA(show);
+            break;
+        case "3pp":
+            sortBy3PP(show);
+            break;
+        case "2p":
+            sortBy2P(show);
+            break;
+        case "2pa":
+            sortBy2PA(show);
+            break;
+        case "2pp":
+            sortBy2PP(show);
+            break;
+        case "efg":
+            sortByEFG(show);
+            break;
+        case "oreb":
+            sortByOREB(show);
+            break;
+        case "dreb":
+            sortByDREB(show);
+            break;
+        case "treb":
+            sortByTREB(show);
+            break;
+        case "ast":
+            sortByAssists(show);
+            break;
+        case "stl":
+            sortBySteals(show);
+            break;
+        case "blk":
+            sortByBlocks(show);
+            break;
+        case "tov":
+            sortByTurnovers(show);
+            break;
+        case "pf":
+            sortByFouls(sort);
+            break;
+        case "pts":
+            sortByPoints(sort);
+            break;
+        default:
+            alert("Not Sortable!");
+            break;
+    }
+}
+
+function sortByName(show){
+    for(var i = 0; i < players.length; i++){
+        for(var j = 0; j < players.length; j++){
+            if (j+1 < players.length){
+                if(players[j].name > players[j+1].name){
+                    var temp = players[j];
+                    players[j] = players[j+1];
+                    players[j+1] = temp;
+                }
+            }
+        }
+    }
+    makeTable(show);
+}
+
+function sortByAgeAscending(show){
+    for(var i = 0; i < players.length; i++){
+        for(var j = 0; j < players.length; j++){
+            if (j+1 < players.length){
+                if(players[j].age > players[j+1].age){
+                    var temp = players[j];
+                    players[j] = players[j+1];
+                    players[j+1] = temp;
+                }
+            }
+        }
+    }
+    makeTable(show);
+}
+
+function sortByAgeDescending(show){
+    for(var i = 0; i < players.length; i++){
+        for(var j = 0; j < players.length; j++){
+            if (j+1 < players.length){
+                if(players[j].age < players[j+1].age){
+                    var temp = players[j];
+                    players[j] = players[j+1];
+                    players[j+1] = temp;
+                }
+            }
+        }
+    }
+    makeTable(show);
+}
+
+function sortByTeam(show){
+    for(var i = 0; i < players.length; i++){
+        for(var j = 0; j < players.length; j++){
+            if (j+1 < players.length){
+                if(players[j].team > players[j+1].team){
+                    var temp = players[j];
+                    players[j] = players[j+1];
+                    players[j+1] = temp;
+                }
+            }
+        }
+    }
+    makeTable(show);
+}
+
+function sortByGamesPlayed(show){
+    for(var i = 0; i < players.length; i++){
+        for(var j = 0; j < players.length; j++){
+            if (j+1 < players.length){
+                if(players[j].gamesPlayed > players[j+1].gamesPlayed){
+                    var temp = players[j];
+                    players[j] = players[j+1];
+                    players[j+1] = temp;
+                }
+            }
+        }
+    }
+    makeTable(show);
+}
+
+function sortByGamesStarted(show){
+    for(var i = 0; i < players.length; i++){
+        for(var j = 0; j < players.length; j++){
+            if (j+1 < players.length){
+                if(players[j].gamesStarted > players[j+1].gamesStarted){
+                    var temp = players[j];
+                    players[j] = players[j+1];
+                    players[j+1] = temp;
+                }
+            }
+        }
+    }
+    makeTable(show);
+}
+
+function sortByFG(show){
+    for(var i = 0; i < players.length; i++){
+        for(var j = 0; j < players.length; j++){
+            if (j+1 < players.length){
+                if(players[j].fieldGoals < players[j+1].fieldGoals){
+                    var temp = players[j];
+                    players[j] = players[j+1];
+                    players[j+1] = temp;
+                }
+            }
+        }
+    }
+    makeTable(show);
+}
+
+function sortByFGA(show){
+    for(var i = 0; i < players.length; i++){
+        for(var j = 0; j < players.length; j++){
+            if (j+1 < players.length){
+                if(players[j].fieldGoalsAttempted < players[j+1].fieldGoalsAttempted){
+                    var temp = players[j];
+                    players[j] = players[j+1];
+                    players[j+1] = temp;
+                }
+            }
+        }
+    }
+    makeTable(show);
+}
+
+function sortByFGP(show){
+    for(var i = 0; i < players.length; i++){
+        for(var j = 0; j < players.length; j++){
+            if (j+1 < players.length){
+                if(players[j].fieldGoalPercent < players[j+1].fieldGoalPercent){
+                    var temp = players[j];
+                    players[j] = players[j+1];
+                    players[j+1] = temp;
+                }
+            }
+        }
+    }
+    makeTable(show);
+}
+
+function sortBy3P(show){
+    for(var i = 0; i < players.length; i++){
+        for(var j = 0; j < players.length; j++){
+            if (j+1 < players.length){
+                if(players[j].threePointers < players[j+1].threePointers){
+                    var temp = players[j];
+                    players[j] = players[j+1];
+                    players[j+1] = temp;
+                }
+            }
+        }
+    }
+    makeTable(show);
+}
+
+function sortBy3PA(show){
+    for(var i = 0; i < players.length; i++){
+        for(var j = 0; j < players.length; j++){
+            if (j+1 < players.length){
+                if(players[j].threePointersAttempted < players[j+1].threePointersAttempted){
+                    var temp = players[j];
+                    players[j] = players[j+1];
+                    players[j+1] = temp;
+                }
+            }
+        }
+    }
+    makeTable(show);
+}
+
+function sortBy3PP(show){
+    for(var i = 0; i < players.length; i++){
+        for(var j = 0; j < players.length; j++){
+            if (j+1 < players.length){
+                if(players[j].threePointPercent < players[j+1].threePointPercent){
+                    var temp = players[j];
+                    players[j] = players[j+1];
+                    players[j+1] = temp;
+                }
+            }
+        }
+    }
+    makeTable(show);
+}
+
+function sortBy2P(show){
+    for(var i = 0; i < players.length; i++){
+        for(var j = 0; j < players.length; j++){
+            if (j+1 < players.length){
+                if(players[j].twoPointers < players[j+1].twoPointers){
+                    var temp = players[j];
+                    players[j] = players[j+1];
+                    players[j+1] = temp;
+                }
+            }
+        }
+    }
+    makeTable(show);
+}
+
+function sortBy2PA(show){
+    for(var i = 0; i < players.length; i++){
+        for(var j = 0; j < players.length; j++){
+            if (j+1 < players.length){
+                if(players[j].twoPointersAttempted < players[j+1].twoPointersAttempted){
+                    var temp = players[j];
+                    players[j] = players[j+1];
+                    players[j+1] = temp;
+                }
+            }
+        }
+    }
+    makeTable(show);
+}
+
+function sortBy2PP(show){
+    for(var i = 0; i < players.length; i++){
+        for(var j = 0; j < players.length; j++){
+            if (j+1 < players.length){
+                if(players[j].twoPointPercent < players[j+1].twoPointPercent){
+                    var temp = players[j];
+                    players[j] = players[j+1];
+                    players[j+1] = temp;
+                }
+            }
+        }
+    }
+    makeTable(show);
+}
+
+function sortByEFG(show){
+    for(var i = 0; i < players.length; i++){
+        for(var j = 0; j < players.length; j++){
+            if (j+1 < players.length){
+                if(players[j].effectiveFieldGoalPercent < players[j+1].effectiveFieldGoalPercent){
+                    var temp = players[j];
+                    players[j] = players[j+1];
+                    players[j+1] = temp;
+                }
+            }
+        }
+    }
+    makeTable(show);
+}
+
+function sortByOREB(show){
+    for(var i = 0; i < players.length; i++){
+        for(var j = 0; j < players.length; j++){
+            if (j+1 < players.length){
+                if(players[j].offensiveReboundsPerGame < players[j+1].offensiveReboundsPerGame){
+                    var temp = players[j];
+                    players[j] = players[j+1];
+                    players[j+1] = temp;
+                }
+            }
+        }
+    }
+    makeTable(show);
+}
+
+function sortByDREB(show){
+    for(var i = 0; i < players.length; i++){
+        for(var j = 0; j < players.length; j++){
+            if (j+1 < players.length){
+                if(players[j].defensiveReboundsPerGame < players[j+1].defensiveReboundsPerGame){
+                    var temp = players[j];
+                    players[j] = players[j+1];
+                    players[j+1] = temp;
+                }
+            }
+        }
+    }
+    makeTable(show);
+}
+
+function sortByTREB(show){
+    for(var i = 0; i < players.length; i++){
+        for(var j = 0; j < players.length; j++){
+            if (j+1 < players.length){
+                if(players[j].reboundsPerGame < players[j+1].reboundsPerGame){
+                    var temp = players[j];
+                    players[j] = players[j+1];
+                    players[j+1] = temp;
+                }
+            }
+        }
+    }
+    makeTable(show);
+}
+
+function sortByAssists(show){
+    for(var i = 0; i < players.length; i++){
+        for(var j = 0; j < players.length; j++){
+            if (j+1 < players.length){
+                if(players[j].assistsPerGame < players[j+1].assistsPerGame){
+                    var temp = players[j];
+                    players[j] = players[j+1];
+                    players[j+1] = temp;
+                }
+            }
+        }
+    }
+    makeTable(show);
+}
+
+function sortBySteals(show){
+    for(var i = 0; i < players.length; i++){
+        for(var j = 0; j < players.length; j++){
+            if (j+1 < players.length){
+                if(players[j].stealsPerGame < players[j+1].stealsPerGame){
+                    var temp = players[j];
+                    players[j] = players[j+1];
+                    players[j+1] = temp;
+                }
+            }
+        }
+    }
+    makeTable(show);
+}
+
+function sortByBlocks(show){
+    for(var i = 0; i < players.length; i++){
+        for(var j = 0; j < players.length; j++){
+            if (j+1 < players.length){
+                if(players[j].blocksPerGame < players[j+1].blocksPerGame){
+                    var temp = players[j];
+                    players[j] = players[j+1];
+                    players[j+1] = temp;
+                }
+            }
+        }
+    }
+    makeTable(show);
+}
+
+function sortByTurnovers(show){
+    for(var i = 0; i < players.length; i++){
+        for(var j = 0; j < players.length; j++){
+            if (j+1 < players.length){
+                if(players[j].turnoversPerGame < players[j+1].turnoversPerGame){
+                    var temp = players[j];
+                    players[j] = players[j+1];
+                    players[j+1] = temp;
+                }
+            }
+        }
+    }
+    makeTable(show);
+}
+
+function sortByFouls(show){
+    for(var i = 0; i < players.length; i++){
+        for(var j = 0; j < players.length; j++){
+            if (j+1 < players.length){
+                if(players[j].foulsPerGame < players[j+1].foulsPerGame){
+                    var temp = players[j];
+                    players[j] = players[j+1];
+                    players[j+1] = temp;
+                }
+            }
+        }
+    }
+    makeTable(show);
+}
+
+function sortByPoints(show){
+    for(var i = 0; i < players.length; i++){
+        for(var j = 0; j < players.length; j++){
+            if (j+1 < players.length){
+                if(players[j].pointsPerGame < players[j+1].pointsPerGame){
+                    var temp = players[j];
+                    players[j] = players[j+1];
+                    players[j+1] = temp;
+                }
+            }
+        }
+    }
+    makeTable(show);
+}
+
+parseData("data/2023-2024 NBA Player Stats - Regular.csv", manageData); 
+//console.log(playerData) 

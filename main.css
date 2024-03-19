@@ -38,12 +38,12 @@ body {
 
   #table_div {
     background-color: rgb(255, 255, 255) ;
-    border-style: inset;
+    border-style: hidden;
     overflow-x:auto;
   }
 
   #chart_div {
     background-color: rgb(255, 255, 255) ;
-    border-style: inset;
+    border-style: hidden;
   }
 
