@@ -31,7 +31,7 @@ function manageData(data) {
                            data[i][13],data[i][14],data[i][15],data[i][16],data[i][17],data[i][18],
                            data[i][19],data[i][20],data[i][21],data[i][22],data[i][23],data[i][24],
                            data[i][25],data[i][26],data[i][27],data[i][28],data[i][29]);
-        players.push(p);
+        players.push(p);                  
     }
 
     //makeHeader(headers);
@@ -1141,11 +1141,16 @@ function findPlayers(statsOpt, symbol, value){
 
 function showPlayers(qualifyingPlayers, statsOpt){
     let list = document.getElementById("validPlayers");
+    clearList(list);
     for (i = 0; i < qualifyingPlayers.length; i++){
         let li = document.createElement('li');
         li.innerText = makeString(qualifyingPlayers[i], statsOpt);
         list.appendChild(li);
     }
+}
+
+function clearList(list){
+
 }
 
 function makeString(player, statsOpt){
