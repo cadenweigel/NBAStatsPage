@@ -18,7 +18,7 @@
 
         <div id="user">
             <!--Div for user interface menu-->
-            <form action="/action_page.php">
+            <form action="">
                 <label for="stats"><b>Choose a stat to sort by:</b></label>
                 <select name="stats" id="stats">
                   <optgroup label="Player Information">
@@ -69,13 +69,60 @@
 
         <div id="table_div">
             <!--Div for stats table-->>
-            <p>Stats Table</p>
+            <h1>Stats Table</h1>
             <table id="table"></table>
         </div>
 
-        <div id="chart_div">
-            <!--Div for charts-->>
-            <p>Chart Maker</p>
+        <div id="search_div">
+            <!--Div for player search-->>
+            <h1>Player Search</h1>
+            <p>Search for players based on stats</p>
+            <div id="forms">             
+                <form action="">
+                <label for="statsOpt"><b>Choose a stat to filter by:</b></label>
+                <select name="statsOpt" id="statsOpt">
+                  <optgroup label="Player Information">
+                    <option value="age">Age</option>
+                  </optgroup>
+                  <optgroup label="Shooting Volume + Efficiency">
+                    <option value="fg">Field Goals Made</option> 
+                    <option value="fga">Field Goals Attempted</option>
+                    <option value="fgp">Field Goal Percentage</option>
+                    <option value="3p">3 Pointers Made</option>
+                    <option value="3pa">3 Pointers Attempted</option>
+                    <option value="3pp">3 Point Percentage</option>
+                    <option value="2p">2 Pointers Made</option>
+                    <option value="2pa">2 Pointers Attempted</option>
+                    <option value="2pp">2 Point Percentage</option>
+                    <option value="efg">Effective Field Goal Percentage</option>
+                  </optgroup>
+                  <optgroup label="Per Game Statistics">
+                    <option value="oreb">Offensive Rebounds Per Game</option>
+                    <option value="dreb">Defensive Rebounds Per Game</option>
+                    <option value="treb">Total Rebounds Per Game</option>
+                    <option value="ast">Assists Per Game</option>
+                    <option value="stl">Steals Per Game</option>
+                    <option value="blk">Blocks Per Game</option>
+                    <option value="tov">Turnovers Per Game</option>
+                    <option value="pf">Fouls Per Game</option>
+                    <option value="pts">Points Per Game</option>
+                  </optgroup>
+                </select>
+                </form>
+                <form action="">
+                    <label for="symbol"><b>Choose a relation:</b></label>
+                    <select name="symbol" id="symbol">
+                        <option value="lessthan"><</option>
+                        <option value="requal">=</option>
+                        <option value="greaterthan">></option>
+                    </select>
+                </form>
+                <form action="">
+                    <label for="value"><b>Choose a value:</b></label>
+                    <input type="text" id="value" name="value" value="">
+                </form>
+                <button onclick="filter()">Search for Players!</button>
+            </div>
         </div>
 
     </body>

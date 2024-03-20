@@ -10,12 +10,14 @@ function parseData(url, callBack) {
 
 let players = []; //due to variable scope stuff with callback functions
                   //i need a global variable to store player data
+let headers = [];
+let currentRows = 0; //current number of rows in table, used to delete correct number of rows
+                     //when re-generating the table
 
 function manageData(data) {
     //console.log(data);
 
     //create array of headers for table
-    let headers = [];
     for(let i = 1; i < data[0].length; i++){
         headers.push(data[0][i]);
     }
@@ -32,7 +34,7 @@ function manageData(data) {
         players.push(p);
     }
 
-    makeHeader(headers);
+    //makeHeader(headers);
     //makeTable(players.length);
     //console.log(headers);
 }
@@ -167,8 +169,23 @@ function getStatChoice(){
     //console.log(sortBy);
     selectElement = document.querySelector('#number');
     show = selectElement.options[selectElement.selectedIndex].value;
+    if (show == "all"){
+        show = players.length-1;
+    }
     //console.log(show);
+    deleteTableRows();
+    currentRows = show; //update currentRows
     findSortFunction(sortBy, show);
+}
+
+function deleteTableRows(){
+    var table = document.getElementById("table");
+    if (currentRows != 0) {
+        for (i = currentRows; i > -1; i--){
+            table.deleteRow(i);
+        }
+    }
+    makeHeader(headers);
 }
 
 function findSortFunction(sortBy, show){
@@ -243,10 +260,10 @@ function findSortFunction(sortBy, show){
             sortByTurnovers(show);
             break;
         case "pf":
-            sortByFouls(sort);
+            sortByFouls(show);
             break;
         case "pts":
-            sortByPoints(sort);
+            sortByPoints(show);
             break;
         default:
             alert("Not Sortable!");
@@ -627,6 +644,31 @@ function sortByPoints(show){
         }
     }
     makeTable(show);
+}
+
+//Functions for player stat search
+function filter(){
+    selectElement = document.querySelector('#statsOpt');
+    statsOpt = selectElement.options[selectElement.selectedIndex].value;
+    selectElement = document.querySelector('#symbol');
+    symbol = selectElement.options[selectElement.selectedIndex].value;
+    let inputField = document.getElementById("value"); 
+    value = inputField.value;
+    //console.log(statsOpt);
+    //console.log(symbol);
+    //console.log(value);
+}
+
+function findPlayers(statsOpt, symbol, value){
+    //switch statement with cases from statsOpt
+    //if statements inside for different symbols
+    //value will be used when comparing to a player's stat
+    //EX: if (symbol = greaterthan){
+    //      value = 35
+    //      if (player.age > value){
+    //          qualifyingPlayers.push(player)
+    //      }
+    //    }
 }
 
 parseData("data/2023-2024 NBA Player Stats - Regular.csv", manageData); 
