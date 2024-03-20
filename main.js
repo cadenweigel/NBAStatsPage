@@ -657,6 +657,7 @@ function filter(){
     //console.log(statsOpt);
     //console.log(symbol);
     //console.log(value);
+    findPlayers(statsOpt, symbol, value);
 }
 
 function findPlayers(statsOpt, symbol, value){
@@ -669,7 +670,478 @@ function findPlayers(statsOpt, symbol, value){
     //          qualifyingPlayers.push(player)
     //      }
     //    }
+    let qualifyingPlayers = [];
+    switch(statsOpt){
+        case "age":
+            if (symbol = "greaterthan"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].age > value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            else if (symbol = "lessthan"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].age < value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            else if (symbol = "equal"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].age = value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            break;
+        case "fg":
+            if (symbol = "greaterthan"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].fieldGoals > value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            else if (symbol = "lessthan"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].fieldGoals < value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            else if (symbol = "equal"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].fieldGoals = value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            break;
+        case "fga":
+            if (symbol = "greaterthan"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].fieldGoalsAttempted > value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            else if (symbol = "lessthan"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].fieldGoalsAttempted < value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            else if (symbol = "equal"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].fieldGoalsAttempted = value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            break;
+        case "fgp":
+            if (symbol = "greaterthan"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].fieldGoalPercent > value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            else if (symbol = "lessthan"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].fieldGoalPercent < value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            else if (symbol = "equal"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].fieldGoalPercent = value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            break;            
+        case "3p":
+            if (symbol = "greaterthan"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].threePointers > value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            else if (symbol = "lessthan"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].threePointers < value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            else if (symbol = "equal"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].threePointers = value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            break;  
+        case "3pa":
+            if (symbol = "greaterthan"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].threePointersAttempted > value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            else if (symbol = "lessthan"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].threePointersAttempted < value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            else if (symbol = "equal"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].threePointersAttempted = value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            break;
+        case "3pp":
+            if (symbol = "greaterthan"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].threePointPercent > value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            else if (symbol = "lessthan"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].threePointPercent < value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            else if (symbol = "equal"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].threePointPercent = value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            break;          
+        case "2p":
+            if (symbol = "greaterthan"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].twoPointers > value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            else if (symbol = "lessthan"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].twoPointers < value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            else if (symbol = "equal"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].twoPointers = value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            break;
+        case "2pa":
+            if (symbol = "greaterthan"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].twoPointersAttempted > value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            else if (symbol = "lessthan"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].twoPointersAttempted < value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            else if (symbol = "equal"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].twoPointersAttempted = value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            break;
+        case "2pp":
+            if (symbol = "greaterthan"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].twoPointPercent > value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            else if (symbol = "lessthan"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].twoPointPercent < value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            else if (symbol = "equal"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].twoPointPercent = value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            break;
+        case "efg":
+            if (symbol = "greaterthan"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].effectiveFieldGoalPercent > value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            else if (symbol = "lessthan"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].effectiveFieldGoalPercent < value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            else if (symbol = "equal"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].effectiveFieldGoalPercent = value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            break;
+        case "oreb":
+            if (symbol = "greaterthan"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].offensiveReboundsPerGame > value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            else if (symbol = "lessthan"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].offensiveReboundsPerGame < value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            else if (symbol = "equal"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].offensiveReboundsPerGame = value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            break;
+        case "dreb":
+            if (symbol = "greaterthan"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].defensiveReboundsPerGame > value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            else if (symbol = "lessthan"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].defensiveReboundsPerGame < value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            else if (symbol = "equal"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].defensiveReboundsPerGame = value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            break;
+        case "treb":
+            if (symbol = "greaterthan"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].reboundsPerGame > value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            else if (symbol = "lessthan"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].reboundsPerGame < value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            else if (symbol = "equal"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].reboundsPerGame = value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            break;
+        case "ast":
+            if (symbol = "greaterthan"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].assistsPerGame > value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            else if (symbol = "lessthan"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].assistsPerGame < value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            else if (symbol = "equal"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].assistsPerGame = value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            break;
+        case "stl":
+            if (symbol = "greaterthan"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].stealsPerGame > value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            else if (symbol = "lessthan"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].stealsPerGame < value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            else if (symbol = "equal"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].stealsPerGame = value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            break;
+        case "blk":
+            if (symbol = "greaterthan"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].blocksPerGame > value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            else if (symbol = "lessthan"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].blocksPerGame < value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            else if (symbol = "equal"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].blocksPerGame = value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            break;
+        case "tov":
+            if (symbol = "greaterthan"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].turnoversPerGame > value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            else if (symbol = "lessthan"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].turnoversPerGame < value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            else if (symbol = "equal"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].turnoversPerGame = value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            break;   
+        case "pf":
+            if (symbol = "greaterthan"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].foulsPerGame > value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            else if (symbol = "lessthan"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].foulsPerGame < value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            else if (symbol = "equal"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].foulsPerGame = value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            break;
+        case "oreb":
+            if (symbol = "greaterthan"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].pointsPerGame > value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            else if (symbol = "lessthan"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].pointsPerGame < value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            else if (symbol = "equal"){
+                for (var i = 0; i < players.length; i++){
+                    if (players[i].pointsPerGame = value){
+                        qualifyingPlayers.push(players[i]);
+                    }
+                }
+            }
+            break;
+        default:
+            alert(":(");
+            break;
+    }
+    showPlayers(qualifyingPlayers);
+}
+
+function showPlayers(qualifyingPlayers){
+    console.log(qualifyingPlayers);
 }
 
 parseData("data/2023-2024 NBA Player Stats - Regular.csv", manageData); 
-//console.log(playerData) 
+

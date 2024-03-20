@@ -12,9 +12,9 @@
 
     <body>
 
-        <div>
+        <header>
             <h1  id="heading">NBA Stats</h1>
-        </div>
+        </header>
 
         <div id="user">
             <!--Div for user interface menu-->
@@ -69,13 +69,13 @@
 
         <div id="table_div">
             <!--Div for stats table-->>
-            <h1>Stats Table</h1>
+            <h1 id="section">Stats Table</h1>
             <table id="table"></table>
         </div>
 
         <div id="search_div">
             <!--Div for player search-->>
-            <h1>Player Search</h1>
+            <h1 id="section">Player Search</h1>
             <p>Search for players based on stats</p>
             <div id="forms">             
                 <form action="">
@@ -113,7 +113,7 @@
                     <label for="symbol"><b>Choose a relation:</b></label>
                     <select name="symbol" id="symbol">
                         <option value="lessthan"><</option>
-                        <option value="requal">=</option>
+                        <option value="equal">=</option>
                         <option value="greaterthan">></option>
                     </select>
                 </form>
@@ -123,6 +123,7 @@
                 </form>
                 <button onclick="filter()">Search for Players!</button>
             </div>
+            <p id="results"> Players will appear here! </p>
         </div>
 
     </body>
