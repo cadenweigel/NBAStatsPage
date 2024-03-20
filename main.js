@@ -1109,7 +1109,7 @@ function findPlayers(statsOpt, symbol, value){
                 }
             }
             break;
-        case "oreb":
+        case "pts":
             if (symbol = "greaterthan"){
                 for (var i = 0; i < players.length; i++){
                     if (players[i].pointsPerGame > value){
@@ -1136,12 +1136,88 @@ function findPlayers(statsOpt, symbol, value){
             alert(":(");
             break;
     }
-    showPlayers(qualifyingPlayers);
+    showPlayers(qualifyingPlayers, statsOpt);
 }
 
-function showPlayers(qualifyingPlayers){
-    console.log(qualifyingPlayers);
+function showPlayers(qualifyingPlayers, statsOpt){
+    let list = document.getElementById("validPlayers");
+    for (i = 0; i < qualifyingPlayers.length; i++){
+        let li = document.createElement('li');
+        li.innerText = makeString(qualifyingPlayers[i], statsOpt);
+        list.appendChild(li);
+    }
 }
+
+function makeString(player, statsOpt){
+    //creates string for list from statsOpt
+    let returnString = '';
+    switch(statsOpt){
+        case 'age':
+            returnString = player.name + ' - Age: ' + player.age;
+            break;
+        case 'fg':
+            returnString = player.name + ' - Field Goals Made Per Game: ' + player.fieldGoals;
+            break;
+        case 'fga':
+            returnString = player.name + ' - Field Goals Attempted Per Game: ' + player.fieldGoalsAttempted;
+            break;
+        case 'fgp':
+            returnString = player.name + ' - Field Goal Percentage: ' + player.fieldGoalPercent;
+            break;
+        case '3p':
+            returnString = player.name + ' - Three Pointers Made Per Game: ' + player.threePointers;
+            break;
+        case '3pa':
+            returnString = player.name + ' - Three Pointers Attempted Per Game: ' + player.threePointersAttempted;
+            break;
+        case '3pp':
+            returnString = player.name + ' - Three Point Percentage: ' + player.threePointPercent;
+            break;
+        case '2p':
+            returnString = player.name + ' - Two Pointers Made Per Game: ' + player.twoPointers;
+            break;
+        case '2pa':
+            returnString = player.name + ' - Two Pointers Attempted Per Game: ' + player.twoPointersAttempted;
+            break;
+        case '2pp':
+            returnString = player.name + ' - Two Point Percentage: ' + player.twoPointPercent;
+            break;
+        case 'efg':
+            returnString = player.name + ' - Effective Field Goal Percentage: ' + player.effectiveFieldGoalPercent;
+            break;
+        case 'oreb':
+            returnString = player.name + ' - Offensive Rebounds Per Game: ' + player.offensiveReboundsPerGame;
+            break;
+        case 'dreb':
+            returnString = player.name + ' - Defensive Rebounds Per Game: ' + player.defensiveReboundsPerGame;
+            break;
+        case 'treb':
+            returnString = player.name + ' - Rebounds Per Game: ' + player.reboundsPerGame;
+            break;
+        case 'ast':
+            returnString = player.name + ' - Assists Per Game: ' + player.assistsPerGame;
+            break;
+        case 'stl':
+            returnString = player.name + ' - Steals Per Game: ' + player.stealsPerGame;
+            break;
+        case 'blk':
+            returnString = player.name + ' - Blocks Per Game: ' + player.blocksPerGame;
+            break;
+        case 'tov':
+            returnString = player.name + ' - Turnovers Per Game: ' + player.turnoversPerGame;
+            break;
+        case 'pf':
+            returnString = player.name + ' - Fouls Per Game: ' + player.foulsPerGame;
+            break;
+        case 'pts':
+            returnString = player.name + ' - Points Per Game: ' + player.pointsPerGame;
+            break;
+        default:
+            break
+    }
+    return returnString;
+}
+
 
 parseData("data/2023-2024 NBA Player Stats - Regular.csv", manageData); 
 
