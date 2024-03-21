@@ -1141,7 +1141,6 @@ function findPlayers(statsOpt, symbol, value){
 
 function showPlayers(qualifyingPlayers, statsOpt){
     let list = document.getElementById("validPlayers");
-    // clearList(list);
     for (i = 0; i < qualifyingPlayers.length; i++){
         let li = document.createElement('li');
         li.innerText = makeString(qualifyingPlayers[i], statsOpt);
